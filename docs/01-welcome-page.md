@@ -132,11 +132,11 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index),
+    path('hello/', views.index),
 ]
 ```
 
-- `''`: an empty path, which means the home page (`/`)
+- `'hello/'`: the page address, so our page opens at `/hello/`
 - `views.index`: the view function to run
 - `from . import views`: the `.` means "from this same folder"
 
@@ -171,7 +171,7 @@ python manage.py runserver
 Open this address in your browser:
 
 ```
-http://127.0.0.1:8000/
+http://127.0.0.1:8000/hello/
 ```
 
 You should see:
@@ -217,3 +217,7 @@ ismt_django/
 2. Add a `<p>` paragraph under the heading about yourself.
 3. **Challenge:** Make an `about` page at `http://127.0.0.1:8000/about/`.
    - Hint: make `about.html`, add an `about` view, and add `path('about/', views.about)` in `home/urls.py`.
+
+---
+
+**Next:** [Lesson 2: How the Welcome Page Works](02-how-it-works.md)
