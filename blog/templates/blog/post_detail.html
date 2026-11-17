@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ post.title }} | My Blog{% endblock %}
+
+{% block content %}
+  <article>
+    <h1>{{ post.title }}</h1>
+    <p class="meta">
+      By {{ post.author.username }} on {{ post.created_at|date:"d M Y" }}
+      {% if post.category %}<span class="tag">{{ post.category.name }}</span>{% endif %}
+    </p>
+    <div>{{ post.content|linebreaks }}</div>
+  </article>
+  <p><a href="{% url 'blog_list' %}">&larr; Back to all posts</a></p>
+{% endblock %}

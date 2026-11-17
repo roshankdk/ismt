@@ -170,7 +170,7 @@ You should see a version number like:
 ## Step 5: Create the Project
 
 ```bash
-django-admin startproject weblinks_site .
+django-admin startproject blogsite .
 ```
 
 > ⚠️ **Don't forget the dot `.` at the end!**
@@ -183,7 +183,7 @@ Now your folder looks like this:
 ismt_django/
 ├── venv/
 ├── manage.py
-└── weblinks_site/
+└── blogsite/
     ├── __init__.py
     ├── asgi.py
     ├── settings.py
@@ -196,7 +196,7 @@ ismt_django/
 | File | What it does |
 |---|---|
 | `manage.py` | Your **remote control**. You use it to run commands like `runserver` and `startapp` |
-| `weblinks_site/` | The **project** folder: settings for the whole website |
+| `blogsite/` | The **project** folder: settings for the whole website |
 | `settings.py` | The **rule book**: all the project's settings |
 | `urls.py` | The **main reception desk**: decides where each URL goes |
 | `__init__.py` | An empty file that tells Python "this folder is a package" |
@@ -256,7 +256,7 @@ python manage.py runserver
 
 | | Meaning | Example |
 |---|---|---|
-| **Project** | The **whole website** | `weblinks_site` |
+| **Project** | The **whole website** | `blogsite` |
 | **App** | **One part** of the website, doing one job | `blog`, `shop`, `accounts` |
 
 One project can have **many apps**. Let's make our first one: `blog`.
@@ -298,7 +298,7 @@ blog/
 
 Django doesn't know about our new app yet. We have to tell it.
 
-Open `weblinks_site/settings.py`, find `INSTALLED_APPS`, and add `'blog'` at the end:
+Open `blogsite/settings.py`, find `INSTALLED_APPS`, and add `'blog'` at the end:
 
 ```python
 INSTALLED_APPS = [
@@ -476,7 +476,7 @@ urlpatterns = [
 
 The project's `urls.py` is the **main reception desk**. We need to tell it to send blog visitors to the blog app.
 
-Open `weblinks_site/urls.py` and change it to:
+Open `blogsite/urls.py` and change it to:
 
 ```python
 from django.contrib import admin
@@ -527,10 +527,10 @@ You should see the **Blog** heading and **three blog posts**.
 You type: http://127.0.0.1:8000/blog/
                 │
                 ▼
-   settings.py ──────► ROOT_URLCONF = 'weblinks_site.urls'
+   settings.py ──────► ROOT_URLCONF = 'blogsite.urls'
                 │      "Start with the project's urls.py"
                 ▼
-   weblinks_site/urls.py ──► path('blog/', include('blog.urls'))
+   blogsite/urls.py ──► path('blog/', include('blog.urls'))
                 │            "blog/? Send it to the blog app"
                 ▼
    blog/urls.py ──────► path('', views.blog_list)
@@ -552,7 +552,7 @@ You type: http://127.0.0.1:8000/blog/
 | Restaurant | Django | Our file |
 |---|---|---|
 | The customer asks for food | The **browser** asks for a page | — |
-| The reception desk sends you to a section | The **project urls.py** | `weblinks_site/urls.py` |
+| The reception desk sends you to a section | The **project urls.py** | `blogsite/urls.py` |
 | The section's waiter takes your order | The **app urls.py** | `blog/urls.py` |
 | The cook prepares the food | The **view** | `blog/views.py` |
 | The ingredients | The **context** (data) | `{'posts': posts}` |
@@ -575,7 +575,7 @@ ismt_django/
 ├── venv/                    ← virtual environment (don't touch)
 ├── db.sqlite3               ← database (made by migrate)
 ├── manage.py                ← remote control
-├── weblinks_site/           ← PROJECT
+├── blogsite/           ← PROJECT
 │   ├── settings.py          ← ✏️ added 'blog'
 │   └── urls.py              ← ✏️ added include('blog.urls')
 └── blog/                    ← APP
@@ -593,7 +593,7 @@ ismt_django/
 | `source venv/bin/activate` (Mac)<br>`venv\Scripts\activate` (Windows) | Turns on the virtual environment |
 | `pip install django` | Installs Django |
 | `python -m django --version` | Shows the Django version |
-| `django-admin startproject weblinks_site .` | Creates the project |
+| `django-admin startproject blogsite .` | Creates the project |
 | `python manage.py runserver` | Starts the website |
 | `python manage.py migrate` | Sets up the database |
 | `python manage.py startapp blog` | Creates an app |
@@ -655,7 +655,7 @@ ismt_django/
 ## Quick Quiz
 
 1. Why do we use a virtual environment?
-2. What does the `.` at the end of `django-admin startproject weblinks_site .` mean?
+2. What does the `.` at the end of `django-admin startproject blogsite .` mean?
 3. What's the difference between a project and an app?
 4. What is the third argument in `render(request, 'blog_list.html', {'posts': posts})` called?
 5. What is the difference between `{{ }}` and `{% %}`?

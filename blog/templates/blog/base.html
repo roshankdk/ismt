@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}My Blog{% endblock %}</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 0 16px; color: #222; line-height: 1.6; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid #ddd; margin-bottom: 24px; }
+    nav a { text-decoration: none; color: #0b57d0; margin-left: 16px; }
+    nav .brand { font-weight: 700; font-size: 1.2rem; color: #222; margin-left: 0; }
+    article { padding: 16px 0; border-bottom: 1px solid #eee; }
+    article h2 { margin: 0 0 4px; }
+    .meta { color: #666; font-size: 0.9rem; }
+    .tag { background: #eef; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; }
+    footer { color: #888; font-size: 0.85rem; margin: 32px 0; text-align: center; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="{% url 'blog_list' %}">My Blog</a>
+    <div>
+      <a href="{% url 'blog_list' %}">Home</a>
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <footer>Built with Django</footer>
+</body>
+</html>

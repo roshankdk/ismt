@@ -34,7 +34,7 @@ You type: http://127.0.0.1:8000/hello/
 | Restaurant                                  | Django                          | Our file                    |
 |---------------------------------------------|---------------------------------|-----------------------------|
 | You (the customer) ask for food             | The **browser** asks for a page | —                           |
-| The reception desk sends you to a section   | The **project urls.py**         | `weblinks_site/urls.py`     |
+| The reception desk sends you to a section   | The **project urls.py**         | `blogsite/urls.py`     |
 | The section's waiter takes your order       | The **app urls.py**             | `home/urls.py`              |
 | The cook makes the food                     | The **view**                    | `home/views.py`             |
 | The plate of food you get                   | The **template (HTML)**         | `home/templates/index.html` |
@@ -43,7 +43,7 @@ You type: http://127.0.0.1:8000/hello/
 
 ## ① settings.py: The Rule Book
 
-Before anything else, Django reads `weblinks_site/settings.py`.
+Before anything else, Django reads `blogsite/settings.py`.
 Three settings matter for our page:
 
 ```python
@@ -55,9 +55,9 @@ INSTALLED_APPS = [
 👉 This tells Django that a `home` app exists. Without this line, Django won't look inside `home/` for templates.
 
 ```python
-ROOT_URLCONF = 'weblinks_site.urls'
+ROOT_URLCONF = 'blogsite.urls'
 ```
-👉 This tells Django that the **first** URL file to check is `weblinks_site/urls.py`.
+👉 This tells Django that the **first** URL file to check is `blogsite/urls.py`.
 That's why it's called the **project urls.py**.
 
 ```python
@@ -69,7 +69,7 @@ That's why it's called the **project urls.py**.
 
 ## ② Project urls.py: The Main Reception Desk
 
-**File:** `weblinks_site/urls.py`
+**File:** `blogsite/urls.py`
 
 ```python
 from django.contrib import admin
@@ -269,10 +269,10 @@ To stop it, press `Ctrl + C`.
 http://127.0.0.1:8000/hello/
             │
             ▼
-settings.py ──► ROOT_URLCONF = 'weblinks_site.urls'
+settings.py ──► ROOT_URLCONF = 'blogsite.urls'
             │
             ▼
-weblinks_site/urls.py ──► path('', include('home.urls'))
+blogsite/urls.py ──► path('', include('home.urls'))
             │
             ▼
 home/urls.py ──► path('hello/', views.index)
@@ -294,7 +294,7 @@ home/templates/index.html ──► <h1>Welcome to Django World</h1>
 
 | Word         | One-line meaning                               |
 |--------------|------------------------------------------------|
-| **Project**  | The whole website (`weblinks_site`)            |
+| **Project**  | The whole website (`blogsite`)            |
 | **App**      | One part of the website (`home`)               |
 | **URL**      | The address that decides which view runs       |
 | **View**     | A Python function that returns a page          |

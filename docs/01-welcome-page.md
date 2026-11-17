@@ -27,7 +27,7 @@ Browser  →  Project urls.py  →  App urls.py  →  View  →  Template (HTML)
 
 You should already have:
 
-- A Django project called `weblinks_site`
+- A Django project called `blogsite`
 - A virtual environment called `venv`
 
 Open a terminal in the project folder (the one with `manage.py`) and turn on the virtual environment:
@@ -56,7 +56,7 @@ Now you will see a new `home` folder with files like `views.py`, `models.py` and
 ## Step 2: Register the App
 
 Django must know about our new app.
-Open `weblinks_site/settings.py` and add `'home'` to `INSTALLED_APPS`:
+Open `blogsite/settings.py` and add `'home'` to `INSTALLED_APPS`:
 
 ```python
 INSTALLED_APPS = [
@@ -146,7 +146,7 @@ urlpatterns = [
 
 Now tell the project to send requests to the `home` app.
 
-Open `weblinks_site/urls.py` and change it to:
+Open `blogsite/urls.py` and change it to:
 
 ```python
 from django.contrib import admin
@@ -187,7 +187,7 @@ To stop the server, press `Ctrl + C`.
 ```
 ismt_django/
 ├── manage.py
-├── weblinks_site/
+├── blogsite/
 │   ├── settings.py      ← added 'home'
 │   └── urls.py          ← added include('home.urls')
 └── home/

@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}All Posts | My Blog{% endblock %}
+
+{% block content %}
+  <h1>Latest Posts</h1>
+
+  {% for post in posts %}
+    <article>
+      <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+      <p class="meta">
+        By {{ post.author.username }} on {{ post.created_at|date:"d M Y" }}
+        {% if post.category %}<span class="tag">{{ post.category.name }}</span>{% endif %}
+      </p>
+      <p>{{ post.content|truncatewords:30 }}</p>
+    </article>
+  {% empty %}
+    <p>No posts yet. Add some from the <a href="/admin/">admin panel</a>.</p>
+  {% endfor %}
+{% endblock %}
