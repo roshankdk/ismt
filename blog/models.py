@@ -14,7 +14,7 @@ class Category(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = self.name
+            self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     def __str__(self):
