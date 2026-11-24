@@ -32,3 +32,6 @@ class BlogPublicTests(TestCase):
     def test_unknown_slug_and_draft_return_404(self):
         self.assertEqual(self.client.get('/blog/post/nope/').status_code, 404)
         self.assertEqual(self.client.get(self.draft.get_absolute_url()).status_code, 404)
+
+    def test_category_slug_is_generated(self):
+        self.assertEqual(self.cat.slug, 'travel')
