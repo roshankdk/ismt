@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,6 +27,11 @@ SECRET_KEY = 'django-insecure-336)d-&-ujec8hzcnfc)w$huhj)7-0bzev5qel*i7b_n&yyd74
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+# On Render (test/dev deployment) allow the site's own hostname
+RENDER_HOST = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_HOST:
+    ALLOWED_HOSTS.append(RENDER_HOST)
 
 
 # Application definition
